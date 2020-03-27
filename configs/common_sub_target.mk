@@ -27,14 +27,12 @@ ifneq ($(TARGET_DIR), $(wildcard $(TARGET_DIR)))
 ifeq ($(GITHUB_FLAG), yes)
 	$(call echo-download-msg, $(@:-src=))
 	$(WGET) $(TARGET_DOWNLOAD_PATH) -O $(PROJECT_TARGET)-$(TARGET_VERSION).$(TAR_SUFFIX)
-	$(MKDIR) $(TARGET_DIR)
-	$(TAR_CMD) $(@:-src=).$(TAR_SUFFIX) -C $(TARGET_DIR)
+	$(TAR_CMD) $(@:-src=).$(TAR_SUFFIX)
 	$(RM) $(@:-src=).$(TAR_SUFFIX)
 else
 	$(call echo-download-msg, $(@:-src=))
 	$(WGET) $(TARGET_DOWNLOAD_PATH)/$(@:-src=).$(TAR_SUFFIX)
-	$(MKDIR) $(TARGET_DIR)
-	$(TAR_CMD) $(@:-src=).$(TAR_SUFFIX) -C $(TARGET_DIR)
+	$(TAR_CMD) $(@:-src=).$(TAR_SUFFIX)
 	$(RM) $(@:-src=).$(TAR_SUFFIX)
 endif
 endif
